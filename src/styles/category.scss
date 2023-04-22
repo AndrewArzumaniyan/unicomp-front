@@ -1,0 +1,133 @@
+@import "vars.scss";
+
+.category {
+  padding-bottom: $global-padding-big;
+  padding-top: $global-padding-big;
+
+  @media (max-width: 820px) {
+    padding-bottom: $global-padding-mid;
+    padding-top: $global-padding-mid;
+  }
+
+  @media (max-width: 510px) {
+    padding-bottom: $global-padding-less;
+    padding-top: $global-padding-less;
+  }
+}
+
+.category__title {
+  margin-bottom: 20px;
+  transition: all .3s;
+
+  &.active {
+    color: darkred;
+  }
+}
+
+.category__all-btn {
+  margin-left: 10px;
+  display: inline-block;
+  position: relative;
+  margin-bottom: 40px;
+  padding-right: 10px;
+  padding-bottom: 6px;
+  cursor: pointer;
+
+  &::after {
+    content: "";
+    width: 100%;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    height: 1px;
+    background: #fff;
+  }
+  
+  &.active {
+    color: #2e8eff;
+    &::after {
+      background: #2e8eff;
+    }
+  }
+}
+
+.category {
+  .swiper {
+    width: 100%;
+    padding-left: 10px;
+    padding-right: $container-padding-right-big;
+  }
+  
+  .swiper-wrapper {
+    height: 223.4px;
+    margin-bottom: 10px;
+
+    @media (max-width: 820px) {
+      height: 200px;
+    }
+
+    @media (max-width: 520px) {
+      height: 178px;
+    }
+  }
+
+  .swiper-slide {
+    cursor: pointer;
+    font-weight: 500;
+    font-size: 22px;
+    letter-spacing: 0.07em;
+    text-align: center;
+    font-size: 18px;
+    // padding: 34px 23px;
+    height: calc((100% / 2) - 30px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 2px solid rgba(46, 108, 169, 0.43);
+    border-radius: 3px;
+
+    @media (max-width: 820px) {
+      font-size: 13px;
+      line-height: 16.5px;
+      height: calc((100% / 2) - 15px);
+      // padding: 20px 12px;
+    }
+  
+    &.checked {
+      background: rgba(46, 108, 169, 0.43);
+    }
+  }
+  .swiper-scrollbar {
+    height: 3px;
+    background: #0B0E1D;
+    width: calc(100% - 10px - #{$container-padding-right-big});
+  
+    .swiper-scrollbar-drag {
+      background: #3A7DCD;
+      box-shadow: inset 0px 9px 9px rgba(0, 0, 0, 0.43);
+      border-radius: 3px;
+    }
+  }
+
+  @media (max-width: 1140px) {
+    .swiper {
+      padding-right: $container-padding-right-mid;
+    }
+  
+    .swiper-scrollbar {
+      width: calc(100% - 10px - #{$container-padding-right-mid});
+    }
+  }
+
+  @media (max-width: 820px) {
+    .swiper {
+      padding-right: $container-padding-right-less;
+    }
+  
+    .swiper-scrollbar {
+      width: calc(100% - 10px - #{$container-padding-right-less});
+    }
+  }
+}
+
+
