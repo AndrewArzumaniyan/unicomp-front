@@ -1,17 +1,23 @@
 import React, { useState, useMemo, useEffect } from "react";
-import { Link } from "react-router-dom";
 import axios from "axios";
 import "../../styles/market.scss";
 import unImgs from "../../images/images.js"
 import SearchBox from "../UI/SearchBox";
 
-const Market = ({setPickedUniver, openModal}) => {
+const Market = ({setPickedUniver, openModal, isResize}) => {
   let [universities, setUniversities] = useState([])
   let [universitiesLoading, setUniversitiesLoading] = useState(false)
   let [cities, setCities] = useState([])
   let [searchQuery, setSearchQuery] = useState('')
-  let [selectQuery, setSelectQuery] = useState('все')
+  let [selectQuery, setSelectQuery] = useState({'city' : 'все', 'campus': 'все'})
+  // let [price, setPrice] = useState([0, 900000])
   let [page, setPage] = useState(1)
+
+  function changeSelectQuery(e) {
+    let tmp = Object.assign({}, selectQuery)
+    tmp[e.target.name] = e.target.value
+    setSelectQuery(tmp)
+  }
 
   useMemo(() => {
     let tmp = ['все']
@@ -29,9 +35,15 @@ const Market = ({setPickedUniver, openModal}) => {
 
   const universitiesFilter = useMemo(() => {
     setPage(1)
-    if (selectQuery === 'все') 
-      return universitiesSearch
-    return universitiesSearch.filter((univer) => univer.city.toLowerCase() == selectQuery.toLocaleLowerCase())
+    let result = [...universitiesSearch];
+
+    for(let key in selectQuery) {
+      if (selectQuery[key] !== 'все') {
+        result = result.filter((univer) => univer[key] && univer[key].toLowerCase() === selectQuery[key].toLowerCase())
+      }
+    }
+
+    return result;
   }, [selectQuery, universitiesSearch])
 
   useEffect(() => {
@@ -56,28 +68,97 @@ const Market = ({setPickedUniver, openModal}) => {
       <div className="market__container">
       <div className="market__title-box">
         <h2 className="market__title title">каталог университетов</h2>
-        <SearchBox searchQuery={searchQuery} setSearchQuery={setSearchQuery} />
+        {isResize >= 730
+        ? <SearchBox searchQuery={searchQuery} setSearchQuery={setSearchQuery} />
+        : ''
+        } 
       </div>
       <div className="market__wrapper">
         <aside className="market__aside">
-          <h3 className="market__subtitle">Фильтры</h3>
+          <div className="market__subtitle-box">
+            <h3 className="market__subtitle">Фильтры</h3>
+            {isResize < 730
+            ? <SearchBox searchQuery={searchQuery} setSearchQuery={setSearchQuery} />
+            : ''
+            } 
+          </div>
           <div className="market__list">
               {universitiesLoading 
                 ? <div className="loading">
                     <div className="loading-text">loading...</div>
                     <div className="loading-icon"></div>
                   </div>
-                : <select onChange={(e) => setSelectQuery(e.target.value)} name="cities" id="">
-                    {cities.map((city) => (
-                      <option
-                        className={selectQuery === city ? 'active' : ''}
-                        key={`market-${city}`}
-                        value={city}
-                      >
-                        {city}
-                      </option>
-                    ))}
-                  </select>
+                : <div className="market__filters-box">
+                  <div className="market__filters-city market__filters-filter">
+                    <h4 className="market__filters-title">город:</h4>
+                    <select onChange={changeSelectQuery} name="city" id="">
+                      {cities.map((city) => (
+                        <option
+                          className={selectQuery === city ? 'active' : ''}
+                          key={`market-${city}`}
+                          value={city}
+                        >
+                          {city}
+                        </option>
+                      ))}
+                    </select>
+                  </div>
+                  
+                  <div className="market__filters-campus market__filters-filter">
+                    <h4 className="market__filters-title">общежитие:</h4>
+                    <select onChange={changeSelectQuery} name="campus" id="">
+                      {['все', 'да', 'нет'].map((ans) => (
+                        <option
+                          className={selectQuery === ans ? 'active' : ''}
+                          key={`market-${ans}`}
+                          value={ans}
+                        >
+                          {ans}
+                        </option>
+                      ))}
+                    </select>
+                  </div>
+
+                  <div className="market__filters-entgrants market__filters-filter">
+                    <h4 className="market__filters-title">грант по ЕНТ:</h4>
+                    <select onChange={changeSelectQuery} name="ENTgrants" id="">
+                      {['все', 'да', 'нет'].map((ans) => (
+                        <option
+                          className={selectQuery === ans ? 'active' : ''}
+                          key={`market-${ans}`}
+                          value={ans}
+                        >
+                          {ans}
+                        </option>
+                      ))}
+                    </select>
+                  </div>
+
+                  {/* <div className="market__filters-campus market__filters-filter">
+                    <h4 className="market__filters-title">стоимость бакалавриата:</h4>
+                    <div className="market__filters-inputs">
+                      <div className="market__filters-input-wrapper">
+                        <h5>От</h5>
+                        <input
+                          onChange={(e) => setPrice([+e.target.value, price[1]])} 
+                          type="number" 
+                          className="market__filter-input" 
+                          value={`${price[0]}`} 
+                        />
+                      </div>
+                      <div className="market__filters-input-wrapper">
+                        <h5>до</h5>
+                        <input
+                          onChange={(e) => setPrice([price[0], +e.target.value])} 
+                          type="number" 
+                          className="market__filter-input" 
+                          value={`${price[1]}`}
+                        />
+                      </div>
+                    </div>
+                    <h5 className="market__filters-price">тыс. тенге</h5>
+                  </div> */}
+                </div>
               }
           </div>
         </aside>

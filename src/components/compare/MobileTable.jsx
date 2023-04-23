@@ -9,7 +9,7 @@ import unImgs from "../../images/images.js";
 
 const MobileTable = ({ universities, rows, size }) => {
   return (
-    <section className="mobile-table">
+    <section id="table" className="mobile-table">
       <div className="container mobile-table__container">
         <Swiper
           modules= {[Navigation, Grid]}
@@ -49,8 +49,8 @@ const MobileTable = ({ universities, rows, size }) => {
               allowTouchMove={false}
             >
               {row.map((el, ind) => {
-                if (ind == 0) 
-                  return
+                if (ind === 0) 
+                  return ''
                 return (
                   <SwiperSlide>
                     {el}

@@ -6,7 +6,7 @@ const Modal = ({ visible, delVisible, children, className }) => {
     <div onClick={delVisible} className={`${className} modal ${visible ? "active" : ''}`}>
       <div onClick={(e) => e.stopPropagation()} className="wrapper">
         {children}
-        <a onClick={delVisible} className="modal-close"></a>
+        <span onClick={delVisible} className="modal-close"></span>
       </div>
     </div>
   );

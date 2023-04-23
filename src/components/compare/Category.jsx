@@ -26,8 +26,11 @@ const Category = ({checkedCategories, setCheckedCategories}) => {
   return (
     <section id="main" className="category">
       <div className="container">
-        <h2 className="category__title title">Выбрать категории</h2>
-        <a onClick={changeAllCategories} className="category__all-btn">выбрать все</a>
+        <h2 className="category__title title">
+          Выбрать категории
+          <span>Необходимо выбрать минимум одну категорию!</span>
+        </h2>
+        <span onClick={changeAllCategories} className="category__all-btn">выбрать все</span>
 
         {!categoriesLoading
         ? <CategorySwiper categories={categories} allCategories={allCategories} checkedCategories={checkedCategories} setCheckedCategories={setCheckedCategories}/>

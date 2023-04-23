@@ -6,7 +6,7 @@ const DesktopTable = ({ universities, rows }) => {
   
 
   return (
-    <section className="table">
+    <section id="table" className="table">
       <div className="container table__container">
         <table>
           <thead>

@@ -7,7 +7,7 @@ import Footer from "../components/UI/Footer";
 import autoScroll from "./autoScroll.js";
 
 const UniverMarket = () => {
-  // autoScroll(1300);
+  autoScroll(1300);
 
   let [isBurgerOpen, setIsBurgerOpen] = useState(false);
   let [isResize, setIsResize] = useState(window.innerWidth)
@@ -29,7 +29,7 @@ const UniverMarket = () => {
         : ''
       }
       <Header/>
-      <MarketMain/>
+      <MarketMain isResize={isResize}/>
       <Footer/>
     </div>
   );

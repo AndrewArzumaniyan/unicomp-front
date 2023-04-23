@@ -10,7 +10,7 @@ import food from "./food.png"
 import application from "./application.png"
 import transport from "./transport.png"
 
-export default {
+const images = {
   "kfMGU.png": kfmgu,
   "astanaIT.png": aitu,
   "aues.png": aues,
@@ -23,3 +23,5 @@ export default {
   "application.png": application,
   "transport.png": transport,
 }
+
+export default images;

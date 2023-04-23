@@ -3,11 +3,10 @@ import "../styles/global.scss"
 import GeographyMain from "../components/geography/GeographyMain";
 import Header from "../components/UI/Header.jsx";
 import HeaderBurger from "../components/UI/HeaderBurger";
-import Footer from "../components/UI/Footer";
 import autoScroll from "./autoScroll.js";
 
 const Geogrpahy = () => {
-  // autoScroll(1200)
+  autoScroll(1200)
 
   let [isBurgerOpen, setIsBurgerOpen] = useState(false);
   let [isResize, setIsResize] = useState(window.innerWidth);

@@ -16,10 +16,16 @@
 }
 
 .category__title {
-  margin-bottom: 20px;
+  margin-bottom: 20px !important;
   transition: all .3s;
 
   &.active {
+    color: darkred;
+  }
+
+  span {
+    display: block;
+    font-size: 12px;
     color: darkred;
   }
 }

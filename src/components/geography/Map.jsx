@@ -8,11 +8,12 @@ import axios from "axios";
 const HelpMap = ({openModal, setPickedUniver}) => {
   let [universities, setUniversities] = useState([])
   let [universitiesLoading, setUniversitiesLoading] = useState(false)
-  let [searchQuery, setSearchQuery] = useState('')
+  // let [searchQuery, setSearchQuery] = useState('')
 
   const universitiesSearch = useMemo(() => {
-    return universities.filter((univer) => univer.name.toLowerCase().includes(searchQuery) || univer.visibleName.toLowerCase().includes(searchQuery))
-  }, [searchQuery, universities])
+    return universities
+    // return universities.filter((univer) => univer.name.toLowerCase().includes(searchQuery) || univer.visibleName.toLowerCase().includes(searchQuery))
+  }, [universities])
   
   useEffect(() => {
     setUniversitiesLoading(true)

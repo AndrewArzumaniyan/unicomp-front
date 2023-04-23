@@ -3,7 +3,7 @@ import MarketModal from "./MarketModal.jsx";
 import Market from "./Market.jsx";
 import MarketHero from "./MarketHero.jsx";
 
-const MarketMain = () => {
+const MarketMain = ({isResize}) => {
   let [pickedUniver, setPickedUniver] = useState({})
   let [isModalOpen, setIsModalOpen] = useState(false)
 
@@ -22,7 +22,7 @@ const MarketMain = () => {
       <MarketHero/>
       
       <MarketModal univer={pickedUniver} visible={isModalOpen} delVisible={closeModal}/>
-      <Market setPickedUniver={setPickedUniver} openModal={openModal}/>
+      <Market isResize={isResize} setPickedUniver={setPickedUniver} openModal={openModal}/>
     </main>
   );
 }

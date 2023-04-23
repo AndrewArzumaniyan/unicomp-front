@@ -6,6 +6,7 @@ const GidNavigation = () => {
   return (
     <section id="main" className="navigation">
       <div className="gid-container">
+        <h2 className="title">Собираем информацию. Ждите обновлений!)</h2>
         <div className="navigation__wrapper">
           <div className="navigation__column navigation__column-left">
             <div className="navigation__element">

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 
 const Checkbox = ({elem, checkeds, setCheckeds}) => {
   const handleCheckbox = (event) => {
@@ -12,12 +12,12 @@ const Checkbox = ({elem, checkeds, setCheckeds}) => {
         let firstCheckboxId = tmpCheckeds[0]._id
         document.getElementById(firstCheckboxId).checked = false
         
-        tmpCheckeds = tmpCheckeds.filter((el) => el._id != firstCheckboxId)
+        tmpCheckeds = tmpCheckeds.filter((el) => el._id !== firstCheckboxId)
       }
       
       tmpCheckeds.push(elem)
     } else {
-      tmpCheckeds = tmpCheckeds.filter((el) => el._id != curCheckboxId)
+      tmpCheckeds = tmpCheckeds.filter((el) => el._id !== curCheckboxId)
     }
   
     setCheckeds(tmpCheckeds)

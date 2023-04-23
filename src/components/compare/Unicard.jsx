@@ -38,7 +38,7 @@ const Unicard = ({unicardModalOpen, cardsUnivers, giveInfo}) => {
       </div>
 
       <div className="unicard__btn-box">
-        <a onClick={giveInfo} className="unicard__btn btn">сравнить</a>
+        <span onClick={giveInfo} className="unicard__btn btn">сравнить</span>
         <p className="compare-error-text"></p>
       </div>
     </section>

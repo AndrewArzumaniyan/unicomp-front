@@ -65,7 +65,7 @@ const UnicardModal = ({isResize, isOpen, unicardModalClose, checkeds, setChecked
           )
           )}
       </div>
-      <a onClick={addUniCards} className="uni-modal__btn btn">Выбрать</a>
+      <span onClick={addUniCards} className="uni-modal__btn btn">Выбрать</span>
     </Modal>
  );
 }

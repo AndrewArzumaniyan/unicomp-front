@@ -6,7 +6,7 @@ import Header from "../components/UI/Header.jsx";
 import autoScroll from './autoScroll.js';
 
 const Compare = () => {
-  // autoScroll(1300);
+  autoScroll(1300);
 
   let [isBurgerOpen, setIsBurgerOpen] = useState(false);
   let [isResize, setIsResize] = useState(window.innerWidth);

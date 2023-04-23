@@ -20,7 +20,7 @@ const CategorySwiper = ({allCategories, checkedCategories, setCheckedCategories,
       let tmp = categories.find((category) => category.id === event.target.id)
       tmpCheckeds.push(tmp)
     } else {
-      tmpCheckeds = tmpCheckeds.filter((el) => el.id != event.target.id)
+      tmpCheckeds = tmpCheckeds.filter((el) => el.id !== event.target.id)
     }
     setCheckedCategories(tmpCheckeds)
   }

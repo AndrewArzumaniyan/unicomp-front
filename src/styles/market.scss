@@ -11,17 +11,33 @@
 
   .search__input {
     width: 150px;
+
+    @media (max-width: 520px) {
+      width: 100px;
+      font-size: 15px;
+    }
   }
 
   .search__box{
     align-self: center;
     flex-shrink: 0;
     flex-grow: 0;
+
+    svg {
+      @media (max-width: 520px) {
+        width: 15px;
+        height: 15px;
+      }
+    }
   }
 }
 
 .market__wrapper {
   display: flex;
+
+  @media (max-width: 730px) {
+    flex-direction: column;
+  }
 }
 
 .market__title-box {
@@ -29,6 +45,11 @@
   align-items: center;
   justify-content: space-between;
   margin-bottom: 30px;
+}
+
+.market__subtitle-box {
+  display: flex;
+  justify-content: space-between;
 }
 
 .market__title {
@@ -55,19 +76,73 @@
   border-radius: 3px;
   height: 400px;
   padding: 16px 20px;
+  min-width: 190px;
 
   @media (max-width: 1140px) {
     margin-right: 30px; 
+  }
+
+  @media (max-width: 730px) {
+    width: 100%;
+    height: 200px;
+    margin-bottom: 20px;
   }
 }
 
 .market {
   select {
     width: 100%;
-    background-color: transparent;
     border: 1px solid #fff;
     border-radius: 3px;
   }
+}
+
+.market__filters-box {
+  display: flex;
+  flex-direction: column;
+
+  @media (max-width: 730px) {
+    flex-direction: row;
+    justify-content: space-between;
+    flex-wrap: wrap;
+  }
+}
+
+.market__filters-filter {
+  min-width: 118px;
+
+  &:not(:last-child) {
+    margin-bottom: 20px;
+  }
+
+  @media (max-width: 730px) {
+    width: calc(100% / 3 - 10px);
+  }
+}
+
+.market__filters-inputs {
+  display: flex;
+  justify-content: space-between;
+}
+
+.market__filters-input-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: calc(100% / 2 - 15px);
+}
+
+.market__filter-input {
+  width: 100%;
+}
+
+.market__filters-title {
+  margin-bottom: 5px;
+}
+
+.market__filters-price {
+  text-align: center;
+  color: #fff;
 }
 
 .market__subtitle {
@@ -75,6 +150,10 @@
   font-size: 32px;
   line-height: 40px;
   text-transform: capitalize;
+
+  @media (max-width: 500px) {
+    font-size: 23px;
+  }
 }
 
 .market__cards-box {
@@ -82,6 +161,7 @@
   flex-grow: 0;
   display: flex;
   flex-wrap: wrap;
+  justify-content: space-between;
   position: relative;
   padding-bottom: 30px
 }
@@ -98,9 +178,8 @@
   z-index: 2;
   cursor: pointer;
 
-  
   &:not(:nth-child(4n)) {
-    margin-right: 25px;
+    margin-right: 20px;
   }
   
   &:hover .card__bg{
@@ -108,10 +187,32 @@
   }
 
   @media (max-width: 1140px) {
-    width: calc((100% - 4 * 10px) / 4);
     margin-bottom: 10px;
+    width: calc((100% - 4 * 10px) / 4);
 
     &:not(:nth-child(4n)) {
+      margin-right: 10px;
+    }
+  }
+
+  @media (max-width: 920px) {
+    width: calc((100% - 3 * 10px) / 3);
+
+    &:not(:nth-child(4n)) {
+      margin-right: 0px;
+    }
+    &:not(:nth-child(3n)) {
+      margin-right: 10px;
+    }
+  }
+
+  @media (max-width: 500px) {
+    width: calc((100% - 2 * 10px) / 2);
+
+    &:not(:nth-child(3n)) {
+      margin-right: 0px;
+    }
+    &:not(:nth-child(2n)) {
       margin-right: 10px;
     }
   }
