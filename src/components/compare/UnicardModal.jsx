@@ -21,6 +21,7 @@ const UnicardModal = ({isResize, isOpen, unicardModalClose, checkeds, setChecked
       setUniversitiesLoading(false)
     })
   }, [])
+  
 
  return (
     <Modal visible={isOpen} className="uni-modal" delVisible={unicardModalClose}>

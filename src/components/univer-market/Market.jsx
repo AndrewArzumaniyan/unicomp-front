@@ -3,6 +3,7 @@ import axios from "axios";
 import "../../styles/market.scss";
 import unImgs from "../../images/images.js"
 import SearchBox from "../UI/SearchBox";
+import useUpload from "../../API/useUpload";
 
 const Market = ({setPickedUniver, openModal, isResize}) => {
   let [universities, setUniversities] = useState([])
