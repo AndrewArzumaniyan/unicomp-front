@@ -29,7 +29,7 @@ const Geogrpahy = () => {
         : ''
       }
       <Header/>
-      <GidMain/>
+      <GidMain isResize={isResize}/>
       <Footer/>
     </div>
   );

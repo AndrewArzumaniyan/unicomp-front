@@ -9,6 +9,7 @@ import relax from "./relax.png"
 import food from "./food.png"
 import application from "./application.png"
 import transport from "./transport.png"
+import standartBg from "./bg.png"
 
 const images = {
   "kfMGU.png": kfmgu,
@@ -22,6 +23,7 @@ const images = {
   "relax.png": relax,
   "application.png": application,
   "transport.png": transport,
+  "stBg": standartBg,
 }
 
 export default images;

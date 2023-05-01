@@ -6,7 +6,7 @@ const UnicardFill = ({univer, ...props}) => {
     <div {...props} className="unicard__card slide">
       <div 
         className="unicard__card-bg"
-        style={{backgroundImage: `url(${unImgs[univer.img]})`}}
+        style={{backgroundImage: `url(${univer.img ? unImgs[univer.img] : unImgs["stBg"]})`}}
       > 
       </div>
       <p className="unicard__card-name">

@@ -16,7 +16,7 @@ const DesktopTable = ({ universities, rows }) => {
                 <th key={university.id}>
                   <div 
                     className="table__bg" 
-                    style={{height: `${100 * rows.length + 80}px`, background: `url(${university.img ? unImgs[university.img] : ''})`}}
+                    style={{height: `${100 * rows.length + 80}px`, background: `url(${university.img ? unImgs[university.img] : unImgs['stBg']})`}}
                   ></div>
                   <span className="table__head-text">
                     {university.visibleName ? university.visibleName : university.name}

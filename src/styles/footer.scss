@@ -21,10 +21,20 @@
   justify-content: space-between;
   align-items: flex-end;
   flex-wrap: wrap;
+
+  @media (max-width: 820px) {
+    flex-direction: column;
+    align-items: center;
+  }
 }
 
 .footer__nav {
   margin-right: 20px;
+
+  @media (max-width: 820px) {
+    margin-right: 0;
+    margin-bottom: 20px;
+  }
 }
 
 .footer__list {

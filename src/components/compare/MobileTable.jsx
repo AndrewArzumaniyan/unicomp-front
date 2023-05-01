@@ -22,7 +22,7 @@ const MobileTable = ({ universities, rows, size }) => {
         >
           {universities.map((university) => (
             <SwiperSlide>
-              <div className="mobile-table__slide-bg" style={{backgroundImage: `url(${unImgs[university.img]})`}}></div>
+              <div className="mobile-table__slide-bg" style={{backgroundImage: `url(${university.img ? unImgs[university.img.trim()] : unImgs["stBg"]})`}}></div>
               <h3 className="mobile-table__slide-title">
                 {university.visibleName ? university.visibleName : university.name}
               </h3>

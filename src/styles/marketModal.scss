@@ -3,8 +3,10 @@
 }
 
 .market-modal {
+  padding: 10px;
+
   .wrapper {
-    width: calc(858 * 100% / 1440);
+    width: 860px;
     height: calc(500 * 100% / 789);
     background-color: #fff;
     background: rgba(29, 58, 101, 0.76);
@@ -12,6 +14,11 @@
     border-radius: 3px;
     padding: 10px 20px 10px 6px;
     display: flex;
+    
+    @media (max-width: 520px) {
+      flex-direction: column;
+      padding: 10px 10px 10px 10px;
+    }
   }
 }
 
@@ -24,6 +31,14 @@
   border-radius: 10px;
   overflow: hidden;
   margin-right: 21px;
+  display: flex;
+
+  @media (max-width: 520px) {
+    flex: 0 0 100%;
+    margin-right: 0;
+    max-height: 200px;
+    margin-bottom: 10px;
+  }
   
   &::after {
     content: "";

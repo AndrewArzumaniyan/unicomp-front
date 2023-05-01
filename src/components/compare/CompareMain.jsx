@@ -58,10 +58,12 @@ const Main = ({ isResize }) => {
       tmp.push(university)
     }
     setUniversities(tmp)
-    document.getElementById('table').scrollIntoView({
-      behavior: 'smooth',
-      block: 'start'
-    })
+    setTimeout(() => {
+      document.getElementById('table').scrollIntoView({
+        behavior: 'smooth',
+        block: 'start'
+      });
+    }, 200);
   }
 
   return (

@@ -174,7 +174,7 @@ const Market = ({setPickedUniver, openModal, isResize}) => {
             <div key={`market-${univer._id}`} onClick={() => {setPickedUniver(univer); openModal()}} className="market__card card">
               <div
                 className="card__bg"
-                style={{background: `url(${unImgs[univer.img]})`}}
+                style={{background: `url(${univer.img ? unImgs[univer.img] : unImgs["stBg"]})`}}
               ></div>
               <div className="card__info">
                 <h3 className="card__title">
