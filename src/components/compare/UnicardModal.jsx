@@ -11,7 +11,7 @@ const UnicardModal = ({isResize, isOpen, unicardModalClose, checkeds, setChecked
   let [searchQuery, setSearchQuery] = useState('')
 
   const universitiesSearch = useMemo(() => {
-    return universities.filter((univer) => univer.name.toLowerCase().includes(searchQuery) || univer.visibleName.toLowerCase().includes(searchQuery))
+    return universities.filter((univer) => univer.name.toLowerCase().includes(searchQuery) || (univer.visibleName && univer.visibleName.toLowerCase().includes(searchQuery)))
   }, [searchQuery, universities])
   
   useEffect(() => {

@@ -5,6 +5,7 @@ import UniverMarket from './pages/UniverMarket.jsx';
 import Error404 from './pages/error(404).jsx';
 import Geography from './pages/Geography.jsx';
 import Gid from './pages/Gid.jsx';
+import NotReady from './pages/NotReady.jsx';
 
 function App() {
   return (
@@ -15,6 +16,7 @@ function App() {
         <Route path="/geography" element={<Geography />}/>
         <Route path="/gid" element={<Gid />}/>
         <Route path="/not-found" element={<Error404 />}/>
+        <Route path="/not-ready" element={<NotReady />}/>
       </Routes>
     </BrowserRouter>
   );

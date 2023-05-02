@@ -31,7 +31,7 @@ const Market = ({setPickedUniver, openModal, isResize}) => {
 
   const universitiesSearch = useMemo(() => {
     setPage(1)
-    return universities.filter((univer) => univer.name.toLowerCase().includes(searchQuery) || univer.visibleName.toLowerCase().includes(searchQuery))
+    return universities.filter((univer) => univer.name.toLowerCase().includes(searchQuery) || (univer.visibleName && univer.visibleName.toLowerCase().includes(searchQuery)))
   }, [searchQuery, universities])
 
   const universitiesFilter = useMemo(() => {
