@@ -23,8 +23,8 @@ const Market = ({setPickedUniver, openModal, isResize}) => {
   useMemo(() => {
     let tmp = ['все']
     universities.forEach((univer) => {
-      if (!tmp.includes(univer.city.toLowerCase().trim()))
-        tmp.push(univer.city.toLowerCase().trim())
+      if (!tmp.includes(univer.city.trim()))
+        tmp.push(univer.city.trim())
     })
     setCities(tmp)
   }, [universities])
@@ -170,7 +170,7 @@ const Market = ({setPickedUniver, openModal, isResize}) => {
               <div className="loading-text">loading...</div>
               <div className="loading-icon"></div>
             </div>
-          : universitiesFilter.slice(0 + (page - 1) * 16, 16 + (page - 1) * 16).map((univer) => (
+          : universitiesFilter.slice(0 + (page - 1) * 24, 24 + (page - 1) * 24).map((univer) => (
             <div key={`market-${univer._id}`} onClick={() => {setPickedUniver(univer); openModal()}} className="market__card card">
               <div
                 className="card__bg"
@@ -190,7 +190,7 @@ const Market = ({setPickedUniver, openModal, isResize}) => {
           }
           <div className="market__pagination-box">
             {!universitiesLoading
-            ? Array.from({length: parseInt(universitiesFilter.length / 16) === universitiesFilter.length / 16 ? universitiesFilter.length / 16 : parseInt(universitiesFilter.length / 16) + 1}, (_, i) => i + 1).map((pag) => (
+            ? Array.from({length: parseInt(universitiesFilter.length / 24) === universitiesFilter.length / 24 ? universitiesFilter.length / 24 : parseInt(universitiesFilter.length / 24) + 1}, (_, i) => i + 1).map((pag) => (
               <div 
                 onClick={changePage} 
                 key={`market-pag-${pag}`} 

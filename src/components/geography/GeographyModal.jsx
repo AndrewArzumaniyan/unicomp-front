@@ -7,7 +7,7 @@ const GeographyModal = ({univer, visible, delVisible}) => {
     <Modal visible={visible} delVisible={delVisible} className="market-modal">
       <div 
         className="market-modal__bg"
-        style={{backgroundImage: `url(${unImgs[univer.img]})`}}
+        style={{backgroundImage: `url(${univer.img ? unImgs[univer.img] : unImgs["stBg"]})`}}
       ></div>
       <div className="market-modal__info">
         <h2 className="market-modal__title">

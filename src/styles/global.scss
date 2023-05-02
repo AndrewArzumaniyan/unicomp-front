@@ -150,6 +150,12 @@ body {
     position: absolute;
     left: -100000000000em;
 
+    &[type="radio"] {
+      & ~ .checkbox__label-icon {
+        border-radius: 50%;
+      }
+    }
+
     &:checked {
       & ~ .checkbox__label-icon {
         border-color: #2E8EFF;

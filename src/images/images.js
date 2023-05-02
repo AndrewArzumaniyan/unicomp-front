@@ -10,6 +10,8 @@ import food from "./food.png"
 import application from "./application.png"
 import transport from "./transport.png"
 import standartBg from "./bg.png"
+import astanaBg from "./astana.png"
+import almatyBg from "./almaty.png"
 
 const images = {
   "kfMGU.png": kfmgu,
@@ -24,6 +26,8 @@ const images = {
   "application.png": application,
   "transport.png": transport,
   "stBg": standartBg,
+  "astana.png": astanaBg,
+  "almaty.png": almatyBg,
 }
 
 export default images;

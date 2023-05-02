@@ -32,6 +32,7 @@ const HelpMap = ({openModal, setPickedUniver}) => {
     >
       {universitiesLoading ? '' :
         universitiesSearch.map((univer) => (
+          univer.coordinates ?
           <Marker
             key={`map-${univer._id}`}
             position={{
@@ -43,6 +44,7 @@ const HelpMap = ({openModal, setPickedUniver}) => {
               openModal()
             }}
           />
+          : ""
         ))
       }
     </GoogleMap>
