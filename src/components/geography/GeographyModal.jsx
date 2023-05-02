@@ -43,7 +43,6 @@ const GeogrpahyModal = ({visible, delVisible, univer}) => {
           {createMarketDescr(univer.doctoral, "Докторантура:")}
           {createMarketDescr(univer.priceDoctoral, "Цена обучения на докторантуре:")}
           {createMarketDescr(univer.exchangeStudy, "Академическая мобильность:")}
-          {createMarketDescr(univer.magistracy, "Магистратура:")}
           {createMarketDescr(univer.tel, "Телефон:")}
           {createMarketDescr(univer.mail, "Email:")}
         </div>

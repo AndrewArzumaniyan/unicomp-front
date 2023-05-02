@@ -20,13 +20,13 @@
   transition: all .3s;
 
   &.active {
-    color: darkred;
+    color: red;
   }
 
   span {
     display: block;
     font-size: 12px;
-    color: darkred;
+    color: red;
   }
 }
 
