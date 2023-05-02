@@ -5,7 +5,7 @@ import "../../styles/marketModal.scss"
 
 const MarketModal = ({visible, delVisible, univer}) => {
   function createMarketDescr(field, title) {
-    if (!field || field == '-')
+    if (!field || field === '-')
       return
     return (
       <div className="market-modal__descr-box">
