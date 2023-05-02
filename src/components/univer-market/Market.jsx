@@ -40,9 +40,7 @@ const Market = ({setPickedUniver, openModal, isResize}) => {
 
     for(let key in selectQuery) {
       if (selectQuery[key] !== 'все') {
-        console.log(result)
         result = result.filter((univer) => univer[key] && univer[key].toLowerCase() === selectQuery[key].toLowerCase())
-        console.log(result)
       }
     }
 
