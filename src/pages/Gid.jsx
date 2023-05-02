@@ -7,7 +7,7 @@ import autoScroll from "./autoScroll";
 import Footer from "../components/UI/Footer";
 
 const Geogrpahy = () => {
-  // autoScroll(1300);
+  autoScroll(1300);
 
   let [isBurgerOpen, setIsBurgerOpen] = useState(false);
   let [isResize, setIsResize] = useState(window.innerWidth)
