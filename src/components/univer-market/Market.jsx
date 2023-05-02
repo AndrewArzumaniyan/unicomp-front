@@ -10,12 +10,12 @@ const Market = ({setPickedUniver, openModal, isResize}) => {
   let [universitiesLoading, setUniversitiesLoading] = useState(false)
   let [cities, setCities] = useState([])
   let [searchQuery, setSearchQuery] = useState('')
-  let [selectQuery, setSelectQuery] = useState({'city' : 'все', 'campus': 'все'})
+  let [selectQuery, setSelectQuery] = useState({'city' : 'все', 'campus': 'все', 'ENTgrants': 'все'})
   // let [price, setPrice] = useState([0, 900000])
   let [page, setPage] = useState(1)
 
   function changeSelectQuery(e) {
-    let tmp = Object.assign({}, selectQuery)
+    let tmp = {...selectQuery}
     tmp[e.target.name] = e.target.value
     setSelectQuery(tmp)
   }
@@ -40,7 +40,9 @@ const Market = ({setPickedUniver, openModal, isResize}) => {
 
     for(let key in selectQuery) {
       if (selectQuery[key] !== 'все') {
+        console.log(result)
         result = result.filter((univer) => univer[key] && univer[key].toLowerCase() === selectQuery[key].toLowerCase())
+        console.log(result)
       }
     }
 
@@ -178,7 +180,7 @@ const Market = ({setPickedUniver, openModal, isResize}) => {
               ></div>
               <div className="card__info">
                 <h3 className="card__title">
-                  {univer.visibleName ? univer.visibleName : univer.name}
+                  {univer.visibleName || univer.visibleName ? univer.visibleName : univer.name}
                 </h3>
                 <h4 className="card__subtitle">
                   {univer.city}
