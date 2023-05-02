@@ -5,11 +5,13 @@
   right: 0;
   bottom: 0;
   z-index: -100000;
+  opacity: 0;
   display: flex;
   align-items: center;
   justify-content: center;
 
   &.active {
     z-index: 100000000;
+    opacity: 1;
   }
 }
