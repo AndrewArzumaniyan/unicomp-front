@@ -14,6 +14,7 @@
     border-radius: 3px;
     padding: 10px 20px 10px 6px;
     display: flex;
+    overflow: hidden;
     
     @media (max-width: 520px) {
       flex-direction: column;
