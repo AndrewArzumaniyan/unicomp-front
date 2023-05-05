@@ -23,6 +23,10 @@
   }
 }
 
+.market-modal__title {
+  position: sticky;
+}
+
 .market-modal__info {
   width: 100%;
   overflow: auto;
@@ -65,13 +69,13 @@
 }
 
 .market-modal__descr {
+  overflow: auto;
   font-weight: 400;
   font-size: 16px;
   width: 100%;
   line-height: 20px;
   letter-spacing: 0.035em;
-  overflow: auto;
-  height: calc(100% - 31px);
+  height: calc(100%);
 }
 
 .market-modal__address {

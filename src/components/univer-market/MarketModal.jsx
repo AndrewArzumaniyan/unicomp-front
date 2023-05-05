@@ -29,7 +29,7 @@ const MarketModal = ({visible, delVisible, univer}) => {
         <h2 className="market-modal__title">
           {univer.visibleName ? univer.visibleName : univer.name}
         </h2>
-        <div className="market-modal__descr">
+        {/* <div className="market-modal__descr"> */}
           <h4 className="market-modal__address">
             {univer.city}, {univer.address}
           </h4>
@@ -46,8 +46,7 @@ const MarketModal = ({visible, delVisible, univer}) => {
           {createMarketDescr(univer.tel, "Телефон:")}
           {createMarketDescr(univer.mail, "Email:")}
         </div>
-
-      </div>
+        {/* </div> */}
     </Modal>
   );
 }
