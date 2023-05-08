@@ -1,17 +1,14 @@
-import React, { useState, useMemo, useEffect } from "react";
-import axios from "axios";
+import React, { useState, useMemo } from "react";
 import "../../styles/market.scss";
 import unImgs from "../../images/images.js"
 import SearchBox from "../UI/SearchBox";
-import useUpload from "../../API/useUpload";
+import useLoadBd from "../../API/useLoadBd";
 
 const Market = ({setPickedUniver, openModal, isResize}) => {
-  let [universities, setUniversities] = useState([])
-  let [universitiesLoading, setUniversitiesLoading] = useState(false)
+  let [data, dataLoading] = useLoadBd('http://www.unicomp.kz/api/universities')
   let [cities, setCities] = useState([])
   let [searchQuery, setSearchQuery] = useState('')
   let [selectQuery, setSelectQuery] = useState({'city' : 'все', 'campus': 'все', 'ENTgrants': 'все'})
-  // let [price, setPrice] = useState([0, 900000])
   let [page, setPage] = useState(1)
 
   function changeSelectQuery(e) {
@@ -21,20 +18,29 @@ const Market = ({setPickedUniver, openModal, isResize}) => {
   }
 
   useMemo(() => {
+    if (!data) return
     let tmp = ['все']
-    universities.forEach((univer) => {
+    data.forEach((univer) => {
       if (!tmp.includes(univer.city.trim()))
         tmp.push(univer.city.trim())
     })
     setCities(tmp)
-  }, [universities])
+  }, [data])
 
   const universitiesSearch = useMemo(() => {
+    if (!data) return
     setPage(1)
-    return universities.filter((univer) => univer.name.toLowerCase().includes(searchQuery) || (univer.visibleName && univer.visibleName.toLowerCase().includes(searchQuery)))
-  }, [searchQuery, universities])
+    return data.filter((univer) => univer.name.toLowerCase().includes(searchQuery) || (univer.visibleName && univer.visibleName.toLowerCase().includes(searchQuery))).sort((a, b) => {
+      if (a.name < b.name)
+        return -1;
+      if (a.name > b.name)
+        return 1;
+      return 0;
+    })
+  }, [searchQuery, data])
 
   const universitiesFilter = useMemo(() => {
+    if (!data) return
     setPage(1)
     let result = [...universitiesSearch];
 
@@ -44,16 +50,14 @@ const Market = ({setPickedUniver, openModal, isResize}) => {
       }
     }
 
-    return result;
+    return result.sort((a, b) => {
+      if (a.name < b.name)
+        return -1;
+      if (a.name > b.name)
+        return 1;
+      return 0;
+    });
   }, [selectQuery, universitiesSearch])
-
-  useEffect(() => {
-    setUniversitiesLoading(true)
-    axios.get('http://www.unicomp.kz/api/universities').then((info) => {
-      setUniversities(info.data)
-      setUniversitiesLoading(false)
-    })
-  }, [])
 
   function changePage(event) {
     setPage(+event.target.textContent.trim())
@@ -84,7 +88,7 @@ const Market = ({setPickedUniver, openModal, isResize}) => {
             } 
           </div>
           <div className="market__list">
-              {universitiesLoading 
+              {dataLoading 
                 ? <div className="loading">
                     <div className="loading-text">loading...</div>
                     <div className="loading-icon"></div>
@@ -134,43 +138,18 @@ const Market = ({setPickedUniver, openModal, isResize}) => {
                       ))}
                     </select>
                   </div>
-
-                  {/* <div className="market__filters-campus market__filters-filter">
-                    <h4 className="market__filters-title">стоимость бакалавриата:</h4>
-                    <div className="market__filters-inputs">
-                      <div className="market__filters-input-wrapper">
-                        <h5>От</h5>
-                        <input
-                          onChange={(e) => setPrice([+e.target.value, price[1]])} 
-                          type="number" 
-                          className="market__filter-input" 
-                          value={`${price[0]}`} 
-                        />
-                      </div>
-                      <div className="market__filters-input-wrapper">
-                        <h5>до</h5>
-                        <input
-                          onChange={(e) => setPrice([price[0], +e.target.value])} 
-                          type="number" 
-                          className="market__filter-input" 
-                          value={`${price[1]}`}
-                        />
-                      </div>
-                    </div>
-                    <h5 className="market__filters-price">тыс. тенге</h5>
-                  </div> */}
                 </div>
               }
           </div>
         </aside>
         
         <div className="market__cards-box">
-          {universitiesLoading
+          {dataLoading
           ? <div className="loading">
               <div className="loading-text">loading...</div>
               <div className="loading-icon"></div>
             </div>
-          : universitiesFilter.slice(0 + (page - 1) * 24, 24 + (page - 1) * 24).map((univer) => (
+          : universitiesFilter.length ? universitiesFilter.slice(0 + (page - 1) * 24, 24 + (page - 1) * 24).map((univer) => (
             <div key={`market-${univer._id}`} onClick={() => {setPickedUniver(univer); openModal()}} className="market__card card">
               <div
                 className="card__bg"
@@ -186,10 +165,10 @@ const Market = ({setPickedUniver, openModal, isResize}) => {
                 <span className="card__clicked"></span>
               </div>
             </div>
-          ))
+          )) : "Ничего не найдено:("
           }
           <div className="market__pagination-box">
-            {!universitiesLoading
+            {!dataLoading
             ? Array.from({length: parseInt(universitiesFilter.length / 24) === universitiesFilter.length / 24 ? universitiesFilter.length / 24 : parseInt(universitiesFilter.length / 24) + 1}, (_, i) => i + 1).map((pag) => (
               <div 
                 onClick={changePage} 

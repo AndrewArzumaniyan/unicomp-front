@@ -69,7 +69,7 @@ const Main = ({ isResize }) => {
   return (
     <main className="main">
       <Hero/>
-      <Category checkedCategories={checkedCategories} setCheckedCategories={setCheckedCategories}/>
+      <Category isResize={isResize} checkedCategories={checkedCategories} setCheckedCategories={setCheckedCategories}/>
       <Univers/>
       <UnicardModal isResize={isResize} addUniCards={addUniCards} checkeds={checkedUniversities} setCheckeds={setCheckedUniversities} isOpen={isUnicardModalOpen} unicardModalClose={closeModal} />
       <Unicard giveInfo={giveInfo} cardsUnivers={cardsUnivers} unicardModalOpen={openModal}/>

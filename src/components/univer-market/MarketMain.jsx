@@ -1,5 +1,5 @@
 import React, {useState} from "react";
-import MarketModal from "./MarketModal.jsx";
+import ModalCard from "../UI/ModalCard.jsx";
 import Market from "./Market.jsx";
 import MarketHero from "./MarketHero.jsx";
 
@@ -21,7 +21,7 @@ const MarketMain = ({isResize}) => {
     <main className="main">
       <MarketHero/>
       
-      <MarketModal univer={pickedUniver} visible={isModalOpen} delVisible={closeModal}/>
+      <ModalCard univer={pickedUniver} visible={isModalOpen} delVisible={closeModal}/>
       <Market isResize={isResize} setPickedUniver={setPickedUniver} openModal={openModal}/>
     </main>
   );

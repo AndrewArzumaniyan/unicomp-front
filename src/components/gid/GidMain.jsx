@@ -1,36 +1,29 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import GeographyHero from "../gid/GidHero";
 import GidNavigation from "./GidNavigation";
+import useLoadBd from "../../API/useLoadBd.js"
 import GidModal from "./GitModal";
-import axios from "axios";
 import GidArticle from "./GidArticle";
 import { useMemo } from "react";
 
 const GidMain = ({ isResize }) => {
-  let [gid, setGid] = useState([])
   let [isModalOpen, setModalOpen] = useState(false)
-  let [gidLoading, setGidLoading] = useState(false)
+  let [data, dataLoading] = useLoadBd('http://www.unicomp.kz/api/gid')
   let [selectCity, setSelectCity] = useState('')
 
   const selectGid = useMemo(() => {
-    return gid.filter((el) => el.name === selectCity)[0]
+    if (!data) return null
+    return data.filter((el) => el.name === selectCity)[0]
   }, [selectCity])
 
-  const readySities = useMemo(() => {
+  const readyCities = useMemo(() => {
+    if (!data) return null
     let tmp = []
-    for (let el of gid) {
+    for (let el of data) {
       tmp.push(el.name)
     }
     return tmp
-  }, [gid])
-
-  useEffect(() => {
-    setGidLoading(true)
-    axios.get('http://www.unicomp.kz/api/gid').then((info) => {
-      setGid(info.data)
-      setGidLoading(false)
-    })
-  }, [])
+  }, [data])
 
   const openModal = () => {
     setModalOpen(true)
@@ -44,7 +37,7 @@ const GidMain = ({ isResize }) => {
 
   return (
     <div className="main">
-      <GidModal isResize={isResize} setSelectCity={setSelectCity} isOpen={isModalOpen} closeModal={closeModal} cities={readySities} gidLoading={gidLoading}/>
+      <GidModal isResize={isResize} setSelectCity={setSelectCity} isOpen={isModalOpen} closeModal={closeModal} cities={readyCities} gidLoading={dataLoading}/>
       <GeographyHero/>
       <GidNavigation selectCity={selectCity} openModal={openModal}/>
       {selectGid ?

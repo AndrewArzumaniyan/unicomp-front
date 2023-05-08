@@ -8,7 +8,7 @@ const GidModal = ({ isResize, isOpen, closeModal, setSelectCity, cities, gidLoad
   let [chcity, setChCity] = useState('')
   
   return (
-    <Modal visible={isOpen} className="uni-modal">
+    <Modal visible={isOpen} className="uni-modal" delVisible={closeModal}>
       <div className="gid-modal__title-box">
         <h3 className="gid-modal__title title">ВЫБРАТЬ ГОРОД</h3>
       </div>

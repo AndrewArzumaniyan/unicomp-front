@@ -1,8 +1,8 @@
 import React, {useState} from "react";
 import GeographyHero from "./GeographyHero";
+import ModalCard from "../UI/ModalCard.jsx";
 import Map from "./Map"
 import "../../styles/map.scss"
-import GeographyModal from "./GeographyModal";
 
 const GeographyMain = () => {
   let [pickedUniver, setPickedUniver] = useState({})
@@ -22,7 +22,7 @@ const GeographyMain = () => {
     <div className="main">
       <GeographyHero/>
 
-      <GeographyModal univer={pickedUniver} visible={isModalOpen} delVisible={closeModal}/>
+      <ModalCard univer={pickedUniver} visible={isModalOpen} delVisible={closeModal}/>
 
       <div id="main" className="map" style={{ width: `100vw`, height: `100vh` }}>
         <Map

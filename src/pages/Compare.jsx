@@ -12,10 +12,10 @@ const Compare = () => {
   let [isResize, setIsResize] = useState(window.innerWidth);
 
   useEffect(() => {
-    window.addEventListener('resize', (el) => {
-      setIsResize(el.target.innerWidth)
-    })
-  })
+    // window.addEventListener('resize', () => {
+      setIsResize(window.innerWidth)
+    // })
+  }, [window.innerWidth])
 
   const changeIsBurgerOpen = () => {
     setIsBurgerOpen(!isBurgerOpen);
