@@ -21,13 +21,13 @@ const GidArticle = ({ gidEl}) => {
             </div>
           </div>
 
-          {Object.keys(gidEl).filter((el) => el != 'common_description' && el != "_id" && el != "name" && el != "img").map((key) => (
+          {Object.keys(gidEl).filter((el) => el !== 'common_description' && el !== "_id" && el !== "name" && el !== "img").map((key) => (
             <div key={Math.random()} id={`${key}`} className="article__part">
               <h3 className="article__part-title article-title">
                 {gidEl[key]["title"]}
               </h3>
 
-              {Object.keys(gidEl[key]).filter((el) => el != "title").map((key_key) => (
+              {Object.keys(gidEl[key]).filter((el) => el !== "title").map((key_key) => (
                 <div key={`${Math.random()}`} className="article__part-part">
                   <h4 className="article__part-subtitle">
                     {gidEl[key][key_key]["title"].toUpperCase()}
